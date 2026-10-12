@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: nexacart-postgres
+    environment:
+      POSTGRES_DB: nexacart_portfolio1
+      POSTGRES_USER: nexacart_user
+      POSTGRES_PASSWORD: nexacart_password
+    ports:
+      - "55432:5432"
+    volumes:
+      - nexacart_postgres_data:/var/lib/postgresql/data
+      - ./portfolio-1-database-design/sql:/sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U nexacart_user -d nexacart_portfolio1"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  nexacart_postgres_data:

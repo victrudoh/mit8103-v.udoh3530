@@ -33,3 +33,25 @@ The database design supports the core operational data needed by an e-commerce p
 - Store payment attempts and payment outcomes for orders.
 - Track shipment status and delivery information.
 - Store customer reviews for purchased or reviewed products.
+
+## Local PostgreSQL Setup
+
+This portfolio uses PostgreSQL for the relational database implementation. The local database can be started with Docker or OrbStack from the repository root:
+
+```bash
+docker compose up -d
+```
+
+The schema can be applied with:
+
+```bash
+docker compose exec -T postgres psql -U nexacart_user -d nexacart_portfolio1 -f /sql/01-create-schema.sql
+```
+
+To list the created tables:
+
+```bash
+docker compose exec -T postgres psql -U nexacart_user -d nexacart_portfolio1 -c "\\dt"
+```
+
+The local PostgreSQL port is exposed as `55432` for optional database GUI tools.
