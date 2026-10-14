@@ -48,6 +48,12 @@ The schema can be applied with:
 docker compose exec -T postgres psql -U nexacart_user -d nexacart_portfolio1 -f /sql/01-create-schema.sql
 ```
 
+Seed data can be loaded with:
+
+```bash
+docker compose exec -T postgres psql -U nexacart_user -d nexacart_portfolio1 -f /sql/02-seed-data.sql
+```
+
 To list the created tables:
 
 ```bash
