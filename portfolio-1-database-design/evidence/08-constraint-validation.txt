@@ -1,0 +1,88 @@
+Pager usage is off.
+Null display is "(none)".
+NexaCart Step 6: constraint and relationship validation
+BEGIN
+SET
+SET
+CREATE TABLE
+CREATE FUNCTION
+CREATE FUNCTION
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 2
+INSERT 0 2
+INSERT 0 1
+INSERT 0 2
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+DO
+
+POSITIVE TESTS: valid inserts and relationships
+ test |                  test_name                  | result 
+------+---------------------------------------------+--------
+    1 | Customer with linked address                | PASS
+    2 | Category with two products                  | PASS
+    3 | Inventory accepts positive and zero stock   | PASS
+    4 | Order with two products and matching total  | PASS
+    5 | Failed payment followed by successful retry | PASS
+    6 | One shipment linked to order                | PASS
+    7 | Valid customer-product review               | PASS
+(7 rows)
+
+DO
+
+NEGATIVE TESTS: PASS means PostgreSQL rejected the insert as expected
+ test |               test_name               | result | sqlstate |          constraint_name          
+------+---------------------------------------+--------+----------+-----------------------------------
+    8 | Duplicate customer primary key        | PASS   | 23505    | customers_pkey
+    9 | Duplicate customer email              | PASS   | 23505    | customers_email_key
+   10 | Missing required first name           | PASS   | 23502    | (none)
+   11 | Negative product price                | PASS   | 23514    | products_price_check
+   12 | Negative inventory quantity           | PASS   | 23514    | inventory_quantity_in_stock_check
+   13 | Negative reorder level                | PASS   | 23514    | inventory_reorder_level_check
+   14 | Zero order item quantity              | PASS   | 23514    | order_items_quantity_check
+   15 | Negative order item unit price        | PASS   | 23514    | order_items_unit_price_check
+   16 | Review rating of six                  | PASS   | 23514    | reviews_rating_check
+   17 | Order with nonexistent customer       | PASS   | 23503    | fk_order_customer
+   18 | Second shipment for same order        | PASS   | 23505    | shipments_order_id_key
+   19 | Second inventory row for same product | PASS   | 23505    | inventory_product_id_key
+   20 | Duplicate product within order        | PASS   | 23505    | uq_order_product
+   21 | Duplicate customer-product review     | PASS   | 23505    | uq_customer_product_review
+   22 | Invalid order status                  | PASS   | 23514    | orders_status_check
+   23 | Zero payment amount                   | PASS   | 23514    | payments_amount_check
+(16 rows)
+
+
+ACTUAL POSTGRESQL ERROR MESSAGES
+ test |                                         error_message                                          
+------+------------------------------------------------------------------------------------------------
+    8 | duplicate key value violates unique constraint "customers_pkey"
+    9 | duplicate key value violates unique constraint "customers_email_key"
+   10 | null value in column "first_name" of relation "customers" violates not-null constraint
+   11 | new row for relation "products" violates check constraint "products_price_check"
+   12 | new row for relation "inventory" violates check constraint "inventory_quantity_in_stock_check"
+   13 | new row for relation "inventory" violates check constraint "inventory_reorder_level_check"
+   14 | new row for relation "order_items" violates check constraint "order_items_quantity_check"
+   15 | new row for relation "order_items" violates check constraint "order_items_unit_price_check"
+   16 | new row for relation "reviews" violates check constraint "reviews_rating_check"
+   17 | insert or update on table "orders" violates foreign key constraint "fk_order_customer"
+   18 | duplicate key value violates unique constraint "shipments_order_id_key"
+   19 | duplicate key value violates unique constraint "inventory_product_id_key"
+   20 | duplicate key value violates unique constraint "uq_order_product"
+   21 | duplicate key value violates unique constraint "uq_customer_product_review"
+   22 | new row for relation "orders" violates check constraint "orders_status_check"
+   23 | new row for relation "payments" violates check constraint "payments_amount_check"
+(16 rows)
+
+
+VALIDATION SUMMARY
+ total_tests | valid_cases | expected_rejections | passed 
+-------------+-------------+---------------------+--------
+          23 |           7 |                  16 |     23
+(1 row)
+
+ROLLBACK
+Test records and temporary helpers rolled back; validation complete.
