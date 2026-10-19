@@ -16,4 +16,12 @@ NexaCart is the selected case study. It is a simulated e-commerce platform where
 
 ## Current Status
 
-The repository structure has been initialised for the five portfolio areas. Portfolio 1 will contain the database design, schema, validation evidence, and documentation. Later portfolio folders are intentionally left empty until their corresponding work begins.
+[Portfolio 1](portfolio-1-database-design/README.md) contains the completed relational
+design, PostgreSQL schema, sample data, constraint tests, evidence, and technical
+documentation. Its validation suite covers 23 cases. Follow its setup instructions
+to reproduce the database using Docker Compose and OrbStack.
+
+Portfolios 2-5 have not started. Their folders remain placeholders for later work
+using the same NexaCart case study. The final 2-3 page LMS summary, individual
+reflection, and assessor access check will accompany the completed semester
+portfolio; Portfolio 1 alone is not the full CA submission.
