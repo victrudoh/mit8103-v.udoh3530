@@ -1,0 +1,44 @@
+{
+  "version": "PostgreSQL 16.15 (Debian 16.15-1.pgdg13+2) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+  "database": "nexacart_portfolio1",
+  "max_parallel_workers_per_gather": "0",
+  "jit": "off",
+  "work_mem": "16MB",
+  "shared_buffers": "128MB",
+  "random_page_cost": "4",
+  "effective_cache_size": "4GB",
+  "enable_seqscan": "on",
+  "enable_indexscan": "on",
+  "enable_indexonlyscan": "on",
+  "enable_bitmapscan": "on",
+  "started_utc": "2026-10-20T17:09:48.594639+00:00",
+  "warmups_per_query_phase": 1,
+  "measured_runs_per_query_phase": 5,
+  "before_order_indexes": [
+    {
+      "indexname": "orders_pkey",
+      "indexdef": "CREATE UNIQUE INDEX orders_pkey ON p2_benchmark.orders USING btree (order_id)",
+      "bytes": 9003008
+    }
+  ],
+  "after_order_indexes": [
+    {
+      "indexname": "orders_pkey",
+      "indexdef": "CREATE UNIQUE INDEX orders_pkey ON p2_benchmark.orders USING btree (order_id)",
+      "bytes": 9003008
+    },
+    {
+      "indexname": "p2_orders_customer_created_idx",
+      "indexdef": "CREATE INDEX p2_orders_customer_created_idx ON p2_benchmark.orders USING btree (customer_id, created_at DESC, order_id DESC)",
+      "bytes": 8134656
+    },
+    {
+      "indexname": "p2_orders_fulfilled_created_idx",
+      "indexdef": "CREATE INDEX p2_orders_fulfilled_created_idx ON p2_benchmark.orders USING btree (created_at, order_id) INCLUDE (total_amount) WHERE ((status)::text = ANY ((ARRAY['shipped'::character varying, 'delivered'::character varying])::text[]))",
+      "bytes": 4890624
+    }
+  ],
+  "public_data_and_sequences_unchanged": true,
+  "identical_before_after_results": true,
+  "public_snapshot_sha256": "e30ac20a882c1b298ae566e118d5e59cc699cc7a3d30146afe14f4200810fb17"
+}
