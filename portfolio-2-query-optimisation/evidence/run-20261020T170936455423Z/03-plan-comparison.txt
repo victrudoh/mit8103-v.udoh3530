@@ -1,0 +1,97 @@
+BEFORE / 01-customer-history / measured run 3
+Execution: 7.974 ms; Planning: 0.225 ms
+Limit: estimated rows=20, actual rows=20, loops=1
+  Shared Hit Blocks: 3909
+  Shared Read Blocks: 0
+  Sort: estimated rows=20, actual rows=20, loops=1
+    Sort Key: ['o.created_at DESC', 'o.order_id DESC']
+    Sort Method: quicksort
+    Shared Hit Blocks: 3909
+    Shared Read Blocks: 0
+    Nested Loop: estimated rows=20, actual rows=20, loops=1
+      Shared Hit Blocks: 3903
+      Shared Read Blocks: 0
+      Index Scan customers using customers_pkey: estimated rows=1, actual rows=1, loops=1
+        Index Cond: (customer_id = 42)
+        Shared Hit Blocks: 6
+        Shared Read Blocks: 0
+      Seq Scan orders: estimated rows=20, actual rows=20, loops=1
+        Filter: (customer_id = 42)
+        Rows Removed by Filter: 199980
+        Shared Hit Blocks: 3897
+        Shared Read Blocks: 0
+
+BEFORE / 02-daily-fulfilled-sales / measured run 3
+Execution: 17.177 ms; Planning: 0.218 ms
+Aggregate: estimated rows=1, actual rows=1, loops=1
+  Shared Hit Blocks: 3897
+  Shared Read Blocks: 0
+  Seq Scan orders: estimated rows=848, actual rows=864, loops=1
+    Filter: (((status)::text = ANY ('{shipped,delivered}'::text[])) AND (created_at >= '2026-03-01 00:00:00'::timestamp without time zone) AND (created_at < '2026-03-02 00:00:00'::timestamp without time zone))
+    Rows Removed by Filter: 199136
+    Shared Hit Blocks: 3897
+    Shared Read Blocks: 0
+
+BEFORE / 03-order-status-summary / measured run 3
+Execution: 41.241 ms; Planning: 0.156 ms
+Sort: estimated rows=6, actual rows=6, loops=1
+  Sort Key: ['status']
+  Sort Method: quicksort
+  Shared Hit Blocks: 3900
+  Shared Read Blocks: 0
+  Aggregate: estimated rows=6, actual rows=6, loops=1
+    Shared Hit Blocks: 3897
+    Shared Read Blocks: 0
+    Seq Scan orders: estimated rows=200000, actual rows=200000, loops=1
+      Shared Hit Blocks: 3897
+      Shared Read Blocks: 0
+
+AFTER / 01-customer-history / measured run 3
+Execution: 0.121 ms; Planning: 0.299 ms
+Limit: estimated rows=20, actual rows=20, loops=1
+  Shared Hit Blocks: 35
+  Shared Read Blocks: 0
+  Sort: estimated rows=20, actual rows=20, loops=1
+    Sort Key: ['o.created_at DESC', 'o.order_id DESC']
+    Sort Method: quicksort
+    Shared Hit Blocks: 35
+    Shared Read Blocks: 0
+    Nested Loop: estimated rows=20, actual rows=20, loops=1
+      Shared Hit Blocks: 29
+      Shared Read Blocks: 0
+      Index Scan customers using customers_pkey: estimated rows=1, actual rows=1, loops=1
+        Index Cond: (customer_id = 42)
+        Shared Hit Blocks: 6
+        Shared Read Blocks: 0
+      Bitmap Heap Scan orders: estimated rows=20, actual rows=20, loops=1
+        Shared Hit Blocks: 23
+        Shared Read Blocks: 0
+        Bitmap Index Scan  using p2_orders_customer_created_idx: estimated rows=20, actual rows=20, loops=1
+          Index Cond: (customer_id = 42)
+          Shared Hit Blocks: 3
+          Shared Read Blocks: 0
+
+AFTER / 02-daily-fulfilled-sales / measured run 3
+Execution: 0.262 ms; Planning: 0.484 ms
+Aggregate: estimated rows=1, actual rows=1, loops=1
+  Shared Hit Blocks: 8
+  Shared Read Blocks: 0
+  Index Only Scan orders using p2_orders_fulfilled_created_idx: estimated rows=848, actual rows=864, loops=1
+    Index Cond: ((created_at >= '2026-03-01 00:00:00'::timestamp without time zone) AND (created_at < '2026-03-02 00:00:00'::timestamp without time zone))
+    Heap Fetches: 0
+    Shared Hit Blocks: 8
+    Shared Read Blocks: 0
+
+AFTER / 03-order-status-summary / measured run 3
+Execution: 41.616 ms; Planning: 0.210 ms
+Sort: estimated rows=6, actual rows=6, loops=1
+  Sort Key: ['status']
+  Sort Method: quicksort
+  Shared Hit Blocks: 3900
+  Shared Read Blocks: 0
+  Aggregate: estimated rows=6, actual rows=6, loops=1
+    Shared Hit Blocks: 3897
+    Shared Read Blocks: 0
+    Seq Scan orders: estimated rows=200000, actual rows=200000, loops=1
+      Shared Hit Blocks: 3897
+      Shared Read Blocks: 0

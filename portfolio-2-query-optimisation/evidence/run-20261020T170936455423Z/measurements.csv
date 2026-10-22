@@ -1,0 +1,37 @@
+phase,query,sample,warmup,planning_ms,execution_ms,shared_hit_blocks,shared_read_blocks,temp_read_blocks,temp_written_blocks,access_paths
+before,01-customer-history,0,True,0.28,8.225,3909,0,0,0,Index Scan customers via customers_pkey; Seq Scan orders
+before,01-customer-history,1,False,0.212,7.603,3909,0,0,0,Index Scan customers via customers_pkey; Seq Scan orders
+before,01-customer-history,2,False,0.341,7.679,3909,0,0,0,Index Scan customers via customers_pkey; Seq Scan orders
+before,01-customer-history,3,False,0.225,7.974,3909,0,0,0,Index Scan customers via customers_pkey; Seq Scan orders
+before,01-customer-history,4,False,0.231,7.931,3909,0,0,0,Index Scan customers via customers_pkey; Seq Scan orders
+before,01-customer-history,5,False,0.22,8.107,3909,0,0,0,Index Scan customers via customers_pkey; Seq Scan orders
+before,02-daily-fulfilled-sales,0,True,0.203,16.937,3897,0,0,0,Seq Scan orders
+before,02-daily-fulfilled-sales,1,False,0.211,17.119,3897,0,0,0,Seq Scan orders
+before,02-daily-fulfilled-sales,2,False,0.208,16.932,3897,0,0,0,Seq Scan orders
+before,02-daily-fulfilled-sales,3,False,0.218,17.177,3897,0,0,0,Seq Scan orders
+before,02-daily-fulfilled-sales,4,False,0.214,17.427,3897,0,0,0,Seq Scan orders
+before,02-daily-fulfilled-sales,5,False,0.218,17.086,3897,0,0,0,Seq Scan orders
+before,03-order-status-summary,0,True,0.148,40.838,3900,0,0,0,Seq Scan orders
+before,03-order-status-summary,1,False,0.163,41.222,3900,0,0,0,Seq Scan orders
+before,03-order-status-summary,2,False,0.174,42.081,3900,0,0,0,Seq Scan orders
+before,03-order-status-summary,3,False,0.156,41.241,3900,0,0,0,Seq Scan orders
+before,03-order-status-summary,4,False,0.144,41.283,3900,0,0,0,Seq Scan orders
+before,03-order-status-summary,5,False,0.152,39.948,3900,0,0,0,Seq Scan orders
+after,01-customer-history,0,True,0.291,0.124,35,0,0,0,Index Scan customers via customers_pkey; Bitmap Heap Scan orders; Bitmap Index Scan  via p2_orders_customer_created_idx
+after,01-customer-history,1,False,0.314,0.144,35,0,0,0,Index Scan customers via customers_pkey; Bitmap Heap Scan orders; Bitmap Index Scan  via p2_orders_customer_created_idx
+after,01-customer-history,2,False,0.341,0.146,35,0,0,0,Index Scan customers via customers_pkey; Bitmap Heap Scan orders; Bitmap Index Scan  via p2_orders_customer_created_idx
+after,01-customer-history,3,False,0.299,0.121,35,0,0,0,Index Scan customers via customers_pkey; Bitmap Heap Scan orders; Bitmap Index Scan  via p2_orders_customer_created_idx
+after,01-customer-history,4,False,0.305,0.129,35,0,0,0,Index Scan customers via customers_pkey; Bitmap Heap Scan orders; Bitmap Index Scan  via p2_orders_customer_created_idx
+after,01-customer-history,5,False,0.327,0.14,35,0,0,0,Index Scan customers via customers_pkey; Bitmap Heap Scan orders; Bitmap Index Scan  via p2_orders_customer_created_idx
+after,02-daily-fulfilled-sales,0,True,0.304,0.173,8,0,0,0,Index Only Scan orders via p2_orders_fulfilled_created_idx
+after,02-daily-fulfilled-sales,1,False,0.3,0.163,8,0,0,0,Index Only Scan orders via p2_orders_fulfilled_created_idx
+after,02-daily-fulfilled-sales,2,False,0.312,0.159,8,0,0,0,Index Only Scan orders via p2_orders_fulfilled_created_idx
+after,02-daily-fulfilled-sales,3,False,0.484,0.262,8,0,0,0,Index Only Scan orders via p2_orders_fulfilled_created_idx
+after,02-daily-fulfilled-sales,4,False,0.303,0.157,8,0,0,0,Index Only Scan orders via p2_orders_fulfilled_created_idx
+after,02-daily-fulfilled-sales,5,False,0.298,0.157,8,0,0,0,Index Only Scan orders via p2_orders_fulfilled_created_idx
+after,03-order-status-summary,0,True,0.405,43.332,3900,0,0,0,Seq Scan orders
+after,03-order-status-summary,1,False,0.237,46.32,3900,0,0,0,Seq Scan orders
+after,03-order-status-summary,2,False,0.205,39.853,3900,0,0,0,Seq Scan orders
+after,03-order-status-summary,3,False,0.21,41.616,3900,0,0,0,Seq Scan orders
+after,03-order-status-summary,4,False,0.219,41.446,3900,0,0,0,Seq Scan orders
+after,03-order-status-summary,5,False,0.221,41.062,3900,0,0,0,Seq Scan orders

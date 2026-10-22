@@ -1,0 +1,51 @@
+01-customer-history
+ order_id |   customer   |     created_at      |  status   | product_lines | units | total_amount
+----------+--------------+---------------------+-----------+---------------+-------+--------------
+        7 | Amara Okafor | 2026-09-15 12:45:00 | pending   |             4 |    10 |     59500.00
+        1 | Amara Okafor | 2026-09-12 09:35:00 | confirmed |             2 |     3 |    464000.00
+(2 rows)
+
+
+02-product-sales
+ product_id |           name            | units_sold | merchandise_value
+------------+---------------------------+------------+-------------------
+         15 | Spicy Plantain Chips      |          2 |           5000.00
+          9 | Non-stick Cookware Set    |          1 |          76000.00
+          8 | KitchenPro Blender        |          1 |          39000.00
+         16 | Database Systems Textbook |          1 |          28500.00
+          6 | Leather Sandals           |          1 |          22000.00
+         10 | LED Desk Lamp             |          1 |          14500.00
+(6 rows)
+
+
+03-category-sales
+ category_id |       category       | fulfilled_orders | units_sold | merchandise_value
+-------------+----------------------+------------------+------------+-------------------
+           3 | Home and Kitchen     |                2 |          3 |         129500.00
+           6 | Books and Stationery |                1 |          1 |          28500.00
+           2 | Fashion              |                1 |          1 |          22000.00
+           5 | Groceries            |                2 |          2 |           5000.00
+(4 rows)
+
+
+04-low-stock
+ product_id | name | quantity_in_stock | reorder_level
+------------+------+-------------------+---------------
+(0 rows)
+
+
+05-payment-summary
+ order_id | order_status | attempts | successes | successful_amount
+----------+--------------+----------+-----------+-------------------
+        1 | confirmed    |        1 |         1 |         464000.00
+        2 | delivered    |        2 |         1 |          78500.00
+        3 | processing   |        1 |         0 |                 0
+        4 | shipped      |        1 |         1 |          56000.00
+        5 | confirmed    |        1 |         1 |          47500.00
+        6 | delivered    |        1 |         1 |          50500.00
+        7 | pending      |        1 |         0 |                 0
+        8 | cancelled    |        1 |         0 |                 0
+(8 rows)
+
+
+PASS: seed report totals, row counts, failed payment retry, empty low-stock result.

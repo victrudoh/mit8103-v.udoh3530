@@ -1,0 +1,15 @@
+Creating isolated NexaCart benchmark data
+ table_name  |  rows
+-------------+--------
+ customers   |  10000
+ addresses   |  10000
+ categories  |      6
+ products    |     18
+ orders      | 200000
+ order_items | 600000
+(6 rows)
+
+                                 validation
+----------------------------------------------------------------------------
+ PASS: counts, 20 orders/customer, 3 items/order, totals, address ownership
+(1 row)
