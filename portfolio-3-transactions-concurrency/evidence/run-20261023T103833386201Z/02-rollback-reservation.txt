@@ -1,0 +1,13 @@
+ROLLBACK DEMONSTRATION: reserve one unit, then cancel the transaction
+     checkpoint     | stock_after_reservation
+--------------------+-------------------------
+ inside_transaction |                       9
+(1 row)
+
+   checkpoint   | available_quantity | rolled_back_event_rows
+----------------+--------------------+------------------------
+ after_rollback |                 10 |                      0
+(1 row)
+
+
+PASS: rollback restored stock and removed the uncommitted event.

@@ -1,0 +1,6 @@
+REPEATABLE READ ISOLATION DEMONSTRATION
+Session A began at REPEATABLE READ and read stock: 10
+Session B replenished one unit and committed stock: 11
+Session A read again before ending its transaction: 10
+A fresh transaction after Session A committed read stock: 11
+PASS: Session A retained its transaction snapshot; a new transaction saw the committed change.

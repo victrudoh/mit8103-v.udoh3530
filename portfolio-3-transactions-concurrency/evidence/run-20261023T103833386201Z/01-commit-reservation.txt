@@ -1,0 +1,13 @@
+COMMIT DEMONSTRATION: reserve two LiteBook 14 units
+     checkpoint     | stock_after_reservation
+--------------------+-------------------------
+ inside_transaction |                      10
+(1 row)
+
+  checkpoint  | available_quantity |   request_reference   | quantity |  outcome
+--------------+--------------------+-----------------------+----------+-----------
+ after_commit |                 10 | P3-COMMIT-RESERVATION |        2 | committed
+(1 row)
+
+
+PASS: committed reservation and stock decrement persisted.

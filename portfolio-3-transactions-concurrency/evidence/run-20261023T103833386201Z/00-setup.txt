@@ -1,0 +1,4 @@
+ product_id | available_quantity
+------------+--------------------
+          3 |                 12
+(1 row)
