@@ -1,0 +1,8 @@
+CONCURRENT STOCK RESERVATION CONTROL
+Lab stock was reset to 1 unit before the two sessions began.
+Session A guarded reservation result: P3-CONCURRENT-A; stock became 0.
+Session B wait event while A held the row lock: Lock|transactionid
+Session A committed its reservation.
+Session B guarded reservation result after the lock released: no row returned (UPDATE 0).
+Final stock: 0; committed reservation rows: 1
+PASS: the atomic quantity predicate and PostgreSQL row lock prevented an oversell.
