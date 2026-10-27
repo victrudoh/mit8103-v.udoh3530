@@ -1,0 +1,34 @@
+AVAILABILITY VERSUS CONSISTENCY: replica outage
+
+A. Asynchronous mode (default). The replica container was stopped.
+   standbys connected to the primary: 0
+   INSERT 'async-write-replica-down' on the primary: committed immediately.
+
+   The replica was restarted, reconnected through its replication slot and received the missed write: rows = 1
+   -> availability for writes was kept; the replica was temporarily behind.
+
+B. Synchronous mode: synchronous_standby_names = 'replica1'.
+ application_name |   state   | sync_state 
+------------------+-----------+------------
+ replica1         | streaming | sync
+(1 row)
+
+   The replica was stopped again and the same kind of INSERT was issued.
+   The client is NOT acknowledged; the primary reports:
+    wait_event_type | wait_event |                                      query                                       
+   -----------------+------------+----------------------------------------------------------------------------------
+    IPC             | SyncRep    | INSERT INTO p5_distributed.replication_probe (note) VALUES ('sync-write-waiting'
+   (1 row)
+   (The row is already written on the primary; PostgreSQL only withholds the commit
+   acknowledgement from the client until the standby confirms it has the WAL.)
+
+   Once the replica returned, the commit was acknowledged (exit status 0) and the row is on the replica: 1
+   -> the write waited instead of completing, favouring consistency over availability.
+
+C. synchronous_standby_names was reset; the standby is asynchronous again.
+ application_name |   state   | sync_state 
+------------------+-----------+------------
+ replica1         | streaming | async
+(1 row)
+
+PASS: asynchronous commits stayed available during the outage; synchronous commits waited for the standby.

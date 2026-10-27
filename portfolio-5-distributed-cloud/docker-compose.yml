@@ -1,0 +1,58 @@
+# Portfolio 5: a separate two-node PostgreSQL replication lab.
+# It is an independent Compose project, so it never touches the Portfolio 1-4
+# containers or volumes. Credentials are disposable local coursework values.
+name: nexacart-p5
+
+services:
+  pg-primary:
+    image: postgres:16
+    container_name: nexacart-p5-primary
+    environment:
+      POSTGRES_DB: nexacart_portfolio1
+      POSTGRES_USER: nexacart_user
+      POSTGRES_PASSWORD: nexacart_password
+    command:
+      - postgres
+      - -c
+      - wal_level=replica
+      - -c
+      - max_wal_senders=5
+      - -c
+      - max_replication_slots=5
+    ports:
+      - "55433:5432"
+    volumes:
+      - p5_primary_data:/var/lib/postgresql/data
+      - ../portfolio-1-database-design/sql:/sql:ro
+      - ./docker/primary-init.sh:/docker-entrypoint-initdb.d/01-replication.sh:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U nexacart_user -d nexacart_portfolio1"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  pg-replica:
+    image: postgres:16
+    container_name: nexacart-p5-replica
+    depends_on:
+      pg-primary:
+        condition: service_healthy
+    environment:
+      POSTGRES_DB: nexacart_portfolio1
+      POSTGRES_USER: nexacart_user
+      POSTGRES_PASSWORD: nexacart_password
+    entrypoint: ["/bin/bash", "/replica-entrypoint.sh"]
+    ports:
+      - "55434:5432"
+    volumes:
+      - p5_replica_data:/var/lib/postgresql/data
+      - ./docker/replica-entrypoint.sh:/replica-entrypoint.sh:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U nexacart_user -d nexacart_portfolio1"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+volumes:
+  p5_primary_data:
+  p5_replica_data:

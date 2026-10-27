@@ -34,7 +34,11 @@ verified with captured screenshots.
 for the NexaCart catalogue and customer profile read models, with index-plan
 evidence. Its implementation is verified with captured screenshots.
 
-Portfolio 5 has not started. Its folder remains a placeholder for later work using
-the same NexaCart case study. The final 2-3 page LMS summary, individual
+[Portfolio 5](portfolio-5-distributed-cloud/README.md) runs the NexaCart database
+as a PostgreSQL primary and streaming replica, with recorded evidence of
+replication, stale reads, synchronous commit and failover, plus sharding and cloud
+discussion. Its implementation is verified with captured screenshots.
+
+The final 2-3 page LMS summary, individual
 reflection, and assessor access check will accompany the completed semester
 portfolio; the individual portfolios are not the full CA submission.

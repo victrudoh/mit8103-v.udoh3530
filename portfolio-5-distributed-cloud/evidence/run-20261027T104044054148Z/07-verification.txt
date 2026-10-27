@@ -1,0 +1,8 @@
+PORTFOLIO 5 VERIFICATION
+PASS: primary and replica formed a streaming replication pair.
+PASS: the Portfolio 1 data replicated to the replica with an identical SHA-256.
+PASS: the replica rejected writes while in recovery.
+PASS: a paused replica returned a stale read and converged after resuming.
+PASS: asynchronous commits succeeded with the replica down; synchronous commits waited for it.
+PASS: after a simulated primary crash, the promoted replica kept the data and accepted writes.
+Public data SHA-256: a13d1d385f6a47539d37fde3ac85737a709d78fad276ecf48456f9f708c2a695

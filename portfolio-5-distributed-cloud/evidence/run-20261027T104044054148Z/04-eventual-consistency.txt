@@ -1,0 +1,16 @@
+EVENTUAL CONSISTENCY WITH ASYNCHRONOUS REPLICATION
+
+1. A normal write on the primary became visible on the replica after about 123 ms (local Docker polling; not a production latency figure).
+
+2. Replica WAL replay was paused with pg_wal_replay_pause(), then a row was committed on the primary.
+   rows named 'while-replay-paused' on the primary: 1
+   rows named 'while-replay-paused' on the replica: 0   <- stale read
+   Primary's view of the lag:
+    application_name |   state   | sync_state | replay_backlog_bytes 
+   ------------------+-----------+------------+----------------------
+    replica1         | streaming | async      |                  280
+   (1 row)
+
+3. Replay was resumed. The replica caught up and now returns the row: 1
+
+PASS: reads from an asynchronous replica can be stale, and they converge once WAL is replayed.

@@ -1,0 +1,22 @@
+PORTFOLIO 5 TOPOLOGY: one primary and one streaming replica
+
+Containers (isolated Compose project nexacart-p5):
+pg-primary: running (healthy)
+pg-replica: running (healthy)
+
+primary: SELECT pg_is_in_recovery() -> f
+replica: SELECT pg_is_in_recovery() -> t
+
+Primary view of its standbys (pg_stat_replication):
+ application_name |   state   | sync_state 
+------------------+-----------+------------
+ replica1         | streaming | async
+(1 row)
+
+Replication slot on the primary:
+   slot_name    | slot_type | active 
+----------------+-----------+--------
+ replica_slot_1 | physical  | t
+(1 row)
+
+PASS: primary accepts writes; replica is a read-only standby streaming from it.

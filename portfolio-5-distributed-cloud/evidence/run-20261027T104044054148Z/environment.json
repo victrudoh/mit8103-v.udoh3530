@@ -1,0 +1,10 @@
+{
+  "image": "postgres:16",
+  "server_version": "16.15 (Debian 16.15-1.pgdg13+2)",
+  "project": "nexacart-p5",
+  "ports": {
+    "primary": 55433,
+    "replica": 55434
+  },
+  "recorded_at": "2026-10-27T10:41:07.262205+00:00"
+}
