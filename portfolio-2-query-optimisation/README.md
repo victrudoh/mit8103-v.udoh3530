@@ -181,9 +181,10 @@ All files below were produced from actual database execution.
 | [Complete plans](evidence/run-20261020T170936455423Z/explain-plans.json) | Full JSON EXPLAIN documents for all runs. |
 | [Query results](evidence/run-20261020T170936455423Z/query-results/) | Identical before/after outputs for all benchmark queries. |
 
-Screenshots are pending student capture; the output files already document the
-executed work. Personal capture instructions are kept in the ignored local
-`evidence/README.md`. They are not part of the repository submission.
+I captured the screenshots in the [evidence folder](evidence/) from the recorded
+run; the output files above document the executed work. My capture instructions
+are kept in the ignored local `evidence/README.md` and are not part of the
+repository submission.
 
 ## Reflection and Sources
 
@@ -205,7 +206,7 @@ be presented as a proven improvement or regression.
 - [PostgreSQL 16: Index-Only Scans](https://www.postgresql.org/docs/16/indexes-index-only-scans.html).
 
 OpenAI Codex assisted with SQL, synthetic data generation, benchmark automation
-and documentation, and executed the recorded verification. The student should
-review the scripts and results, capture their own screenshots, and write their
-personal learning reflection before final submission. No performance figures or
-screenshots have been invented.
+and documentation, and executed the recorded verification. I reviewed the scripts
+and results and captured my own screenshots from the recorded run. My personal
+learning reflection will be written separately for the final submission. No
+performance figures or screenshots have been invented.
