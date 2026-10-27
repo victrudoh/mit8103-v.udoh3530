@@ -373,7 +373,8 @@ the evidence reproducible and identify the remaining work for transaction logic.
 
 This reflection describes observed implementation decisions. My individual
 reflection across all five portfolios is in the
-[final documentation reflection](../final-documentation/reflection.md).
+[final documentation reflection](../final-documentation/reflection.md); its wording
+was drafted with AI assistance and reviewed by me, as declared there.
 
 ## Sources and AI Use
 

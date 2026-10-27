@@ -209,5 +209,6 @@ OpenAI Codex assisted with SQL, synthetic data generation, benchmark automation
 and documentation, and executed the recorded verification. I reviewed the scripts
 and results and captured my own screenshots from the recorded run. My individual
 reflection across all five portfolios is in the
-[final documentation reflection](../final-documentation/reflection.md). No
+[final documentation reflection](../final-documentation/reflection.md); its wording
+was drafted with AI assistance and reviewed by me, as declared there. No
 performance figures or screenshots have been invented.

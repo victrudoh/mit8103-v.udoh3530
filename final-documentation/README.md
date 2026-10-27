@@ -32,5 +32,7 @@ script refuses to produce a PDF outside 2-3 pages.
 ## AI use
 
 The reflection's wording was drafted with AI assistance from the repository's
-recorded results and then reviewed by me. This is declared in the documentation PDF
-and in the portfolio READMEs.
+recorded results and then reviewed by me. This is declared at the end of
+[reflection.md](reflection.md), in the "AI use declaration" section of the
+documentation PDF, in the submitted README text file, and beside the reflection
+link in each portfolio README.
