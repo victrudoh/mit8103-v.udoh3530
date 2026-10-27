@@ -121,9 +121,14 @@ The runner produces:
 | `05-verification.txt` | MongoDB execution and unchanged PostgreSQL public state. |
 | `environment.json` | MongoDB image and runtime version. |
 
-My screenshots of these outputs are still to be captured. My capture
-instructions are in the ignored `evidence/README.md`, which is intentionally not
-part of the submission.
+I captured screenshots of these outputs from the recorded run:
+`01-seed-document-model.png`, `02-query-document-model-a.png`,
+`02-query-document-model-b.png`, `03-validation.png`,
+`04-explain-query-plan.png` and `05-verification.png` in the
+[evidence folder](evidence/), plus `06-mongo-collections.png`, which lists the
+collections directly from the running MongoDB container. My capture instructions
+are in the ignored `evidence/README.md`, which is intentionally not part of the
+submission.
 
 ## Sources
 

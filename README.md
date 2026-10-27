@@ -31,8 +31,8 @@ atomic stock-reservation control under concurrent sessions. Its implementation i
 verified with captured screenshots.
 
 [Portfolio 4](portfolio-4-nosql/README.md) implements a MongoDB document model
-for the NexaCart catalogue and customer profile read models. Its implementation
-and evidence capture are in progress.
+for the NexaCart catalogue and customer profile read models, with index-plan
+evidence. Its implementation is verified with captured screenshots.
 
 Portfolio 5 has not started. Its folder remains a placeholder for later work using
 the same NexaCart case study. The final 2-3 page LMS summary, individual
