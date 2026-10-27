@@ -17,5 +17,19 @@ services:
       timeout: 5s
       retries: 10
 
+  mongo:
+    image: mongo:8.0.30-noble
+    container_name: nexacart-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - nexacart_mongo_data:/data/db
+    healthcheck:
+      test: ["CMD-SHELL", "mongosh --quiet --eval \"db.adminCommand({ ping: 1 }).ok\""]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
 volumes:
   nexacart_postgres_data:
+  nexacart_mongo_data:
