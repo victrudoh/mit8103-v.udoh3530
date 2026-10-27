@@ -233,5 +233,6 @@ part of the submission.
   screenshot is invented.
 
 AI assistance and automated checks do not establish my understanding. I remain
-responsible for reviewing, running and explaining the submitted work, and I will
-write my own reflection for the final submission.
+responsible for reviewing, running and explaining the submitted work. My individual
+reflection is in the
+[final documentation reflection](../final-documentation/reflection.md).
