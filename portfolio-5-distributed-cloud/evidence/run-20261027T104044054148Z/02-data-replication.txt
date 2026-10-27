@@ -1,0 +1,47 @@
+REPLICATION OF THE NEXACART DATA
+The Portfolio 1 schema and seed data were loaded ONLY on the primary.
+
+Row counts on the primary:
+ table_name  | rows 
+-------------+------
+ addresses   |    9
+ categories  |    6
+ customers   |    6
+ inventory   |   18
+ order_items |   18
+ orders      |    8
+ payments    |    9
+ products    |   18
+ reviews     |    7
+ shipments   |    4
+(10 rows)
+
+Row counts on the replica (read from the standby):
+ table_name  | rows 
+-------------+------
+ addresses   |    9
+ categories  |    6
+ customers   |    6
+ inventory   |   18
+ order_items |   18
+ orders      |    8
+ payments    |    9
+ products    |   18
+ reviews     |    7
+ shipments   |    4
+(10 rows)
+
+Order-status report run on the REPLICA (identical to the primary):
+   status   | orders |  revenue  
+------------+--------+-----------
+ cancelled  |      1 | 102500.00
+ confirmed  |      2 | 511500.00
+ delivered  |      2 | 129000.00
+ pending    |      1 |  59500.00
+ processing |      1 | 620000.00
+ shipped    |      1 |  56000.00
+(6 rows)
+
+SHA-256 of public data, primary: a13d1d385f6a47539d37fde3ac85737a709d78fad276ecf48456f9f708c2a695
+SHA-256 of public data, replica: a13d1d385f6a47539d37fde3ac85737a709d78fad276ecf48456f9f708c2a695
+PASS: all ten NexaCart tables replicated with identical data.

@@ -1,0 +1,8 @@
+REPLICA IS READ-ONLY
+Attempt: INSERT INTO customers ... on the replica
+ERROR:  cannot execute INSERT in a read-only transaction
+
+Attempt: INSERT INTO p5_distributed.replication_probe ... on the replica
+ERROR:  cannot execute INSERT in a read-only transaction
+
+PASS: writes are rejected on the replica and nothing reached the primary.

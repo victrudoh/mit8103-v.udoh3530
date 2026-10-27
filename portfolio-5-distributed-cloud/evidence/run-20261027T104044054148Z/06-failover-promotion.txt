@@ -1,0 +1,19 @@
+MANUAL FAILOVER: primary crash and replica promotion
+
+1. The primary container was killed (simulated crash).
+
+2. The replica still serves reads: customers = 6
+   but rejects writes before promotion:
+   ERROR:  cannot execute INSERT in a read-only transaction
+
+3. SELECT pg_promote() on the replica -> t
+   SELECT pg_is_in_recovery() on the promoted node -> f
+
+4. NexaCart public data on the promoted node matches the original primary.
+   SHA-256 before failure (primary): a13d1d385f6a47539d37fde3ac85737a709d78fad276ecf48456f9f708c2a695
+   SHA-256 after promotion (replica): a13d1d385f6a47539d37fde3ac85737a709d78fad276ecf48456f9f708c2a695
+   A new write on the promoted node succeeded: 'write-after-promotion' = 1
+
+PASS: the promoted replica retained all committed data and now accepts writes.
+NOTE: the old primary is deliberately not restarted. Bringing it back as a writer would create a
+      split-brain; it would need pg_rewind or a fresh base backup to rejoin as a standby.
