@@ -189,7 +189,7 @@ The recorded run is in
 I captured screenshots of each output from the recorded run in the
 [evidence folder](evidence/): `01-topology.png`, `02-data-replication.png`,
 `03-read-only-replica.png`, `04-eventual-consistency.png`,
-`05-availability-and-synchronous-commit-a.png`, `06-failover-promotion.png` and
+`05-availability-and-synchronous-commit.png`, `06-failover-promotion.png` and
 `07-verification.png`. `08-lab-state.png` shows `docker compose ps -a` after the
 run, with the primary exited and the promoted replica running. My capture
 instructions are in the ignored `evidence/README.md`, which is intentionally not
