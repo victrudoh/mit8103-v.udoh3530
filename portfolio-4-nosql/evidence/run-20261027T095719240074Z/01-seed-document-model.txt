@@ -1,0 +1,4 @@
+SEEDED DOCUMENT MODEL
+catalogue_items=7
+customer_profiles=2
+indexes=_id_, source_product_id_unique, category_price, tags

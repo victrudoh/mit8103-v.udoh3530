@@ -109,9 +109,9 @@ five outputs:
 | `04-concurrent-reservation-control.txt` | Session B's lock wait and the prevented second reservation. |
 | `05-verification.txt` | All expected outcomes and unchanged `public` state. |
 
-Student screenshots are pending capture. Personal capture commands for the
-recorded run live in the ignored local `evidence/README.md`; the guide itself is
-intentionally excluded from the repository.
+I captured the five screenshots in the [evidence folder](evidence/) from the
+recorded run. My capture commands live in the ignored local `evidence/README.md`;
+the guide itself is intentionally excluded from the repository.
 
 ## Reflection and Sources
 
@@ -132,5 +132,6 @@ architecture.
 - [PostgreSQL 16: Explicit Locking](https://www.postgresql.org/docs/16/explicit-locking.html)
 
 OpenAI Codex assisted with the lab SQL, orchestration script and documentation.
-The student should review the transaction flow, capture their own screenshots,
-and write their personal learning reflection before final submission.
+I reviewed the transaction flow and captured my own screenshots from the recorded
+run. My personal learning reflection will be written separately for the final
+submission.

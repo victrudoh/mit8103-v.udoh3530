@@ -1,0 +1,21 @@
+EXPLAIN 1: category + price query using the default planner
+  default planner choice
+  plan stages (outer -> inner): FETCH -> IXSCAN (category_price)
+  nReturned=3 keysExamined=3 docsExamined=3
+
+EXPLAIN 2: same query forced to a collection scan with hint({ $natural: 1 })
+  forced collection scan
+  plan stages (outer -> inner): COLLSCAN
+  nReturned=3 keysExamined=0 docsExamined=7
+
+EXPLAIN 3: tag lookup using the multikey tags index
+  tags: 'smartphone'
+  plan stages (outer -> inner): FETCH -> IXSCAN (tags)
+  nReturned=1 keysExamined=1 docsExamined=1
+
+CHECKS
+PASS: default plan uses the category_price index
+PASS: indexed query examines fewer documents than a collection scan
+PASS: both plans return the same documents
+PASS: tag query uses the tags index
+EXPLAIN COMPLETE

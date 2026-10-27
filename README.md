@@ -28,9 +28,13 @@ Its implementation has been verified with captured screenshots.
 [Portfolio 3](portfolio-3-transactions-concurrency/README.md) demonstrates
 committed and rolled-back stock reservations, repeatable-read isolation, and an
 atomic stock-reservation control under concurrent sessions. Its implementation is
-verified; student screenshots are pending capture.
+verified with captured screenshots.
 
-Portfolios 4-5 have not started. Their folders remain placeholders for later work
-using the same NexaCart case study. The final 2-3 page LMS summary, individual
+[Portfolio 4](portfolio-4-nosql/README.md) implements a MongoDB document model
+for the NexaCart catalogue and customer profile read models, with index-plan
+evidence. Its implementation is verified with captured screenshots.
+
+Portfolio 5 has not started. Its folder remains a placeholder for later work using
+the same NexaCart case study. The final 2-3 page LMS summary, individual
 reflection, and assessor access check will accompany the completed semester
 portfolio; the individual portfolios are not the full CA submission.

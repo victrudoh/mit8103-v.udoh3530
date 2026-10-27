@@ -371,9 +371,9 @@ suite leaves existing data and ID sequences unchanged, while the seed loader is
 explicitly documented as a dataset replacement operation. These choices make
 the evidence reproducible and identify the remaining work for transaction logic.
 
-This reflection describes observed implementation decisions. The student's
-personal learning reflection for the final LMS submission must reflect their own
-understanding and experience.
+This reflection describes observed implementation decisions. My personal
+learning reflection for the final LMS submission will be written separately and
+reflect my own understanding and experience.
 
 ## Sources and AI Use
 
@@ -394,7 +394,7 @@ understanding and experience.
 OpenAI Codex assisted with implementation, simulated seed data, SQL validation,
 Docker setup, ERD corrections and documentation. Verification included actual
 PostgreSQL runs, expected-error checks, a disposable-database failure test, and
-comparison of data and sequence state before and after validation. The student
-ran the evidence commands and captured the terminal and ERD screenshots. AI
-assistance and automated tests do not establish the student's understanding;
-the student remains responsible for reviewing and explaining the submitted work.
+comparison of data and sequence state before and after validation. I ran the
+evidence commands and captured the terminal and ERD screenshots. AI assistance
+and automated tests do not establish my understanding; I remain responsible for
+reviewing and explaining the submitted work.

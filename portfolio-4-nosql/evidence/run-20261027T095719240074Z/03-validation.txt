@@ -1,0 +1,10 @@
+PASS: seven catalogue documents seeded
+PASS: two embedded customer profiles seeded
+PASS: source product IDs are unique
+PASS: every wishlist product ID resolves to a catalogue document
+PASS: smartphone carries a product-specific storage attribute
+PASS: Amara profile embeds two addresses
+PASS: catalogue category-price index exists
+PASS: schema validation rejects an incomplete catalogue document
+PASS: invalid document was not stored
+VALIDATION COMPLETE
