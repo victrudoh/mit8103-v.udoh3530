@@ -134,4 +134,5 @@ architecture.
 OpenAI Codex assisted with the lab SQL, orchestration script and documentation.
 I reviewed the transaction flow and captured my own screenshots from the recorded
 run. My individual reflection across all five portfolios is in the
-[final documentation reflection](../final-documentation/reflection.md).
+[final documentation reflection](../final-documentation/reflection.md); its wording
+was drafted with AI assistance and reviewed by me, as declared there.

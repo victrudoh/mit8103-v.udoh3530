@@ -235,4 +235,5 @@ part of the submission.
 AI assistance and automated checks do not establish my understanding. I remain
 responsible for reviewing, running and explaining the submitted work. My individual
 reflection is in the
-[final documentation reflection](../final-documentation/reflection.md).
+[final documentation reflection](../final-documentation/reflection.md); its wording
+was drafted with AI assistance and reviewed by me, as declared there.
