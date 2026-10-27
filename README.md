@@ -39,6 +39,7 @@ as a PostgreSQL primary and streaming replica, with recorded evidence of
 replication, stale reads, synchronous commit and failover, plus sharding and cloud
 discussion. Its implementation is verified with captured screenshots.
 
-The final 2-3 page LMS summary, individual
-reflection, and assessor access check will accompany the completed semester
-portfolio; the individual portfolios are not the full CA submission.
+All five portfolios are complete. The [final documentation](final-documentation/README.md)
+holds my individual technical reflection and the script that builds the 2-3 page LMS
+summary and submission package. The portfolios themselves are not the full CA
+submission; the LMS upload is.

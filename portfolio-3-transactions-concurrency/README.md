@@ -133,5 +133,5 @@ architecture.
 
 OpenAI Codex assisted with the lab SQL, orchestration script and documentation.
 I reviewed the transaction flow and captured my own screenshots from the recorded
-run. My personal learning reflection will be written separately for the final
-submission.
+run. My individual reflection across all five portfolios is in the
+[final documentation reflection](../final-documentation/reflection.md).

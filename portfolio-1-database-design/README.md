@@ -371,9 +371,9 @@ suite leaves existing data and ID sequences unchanged, while the seed loader is
 explicitly documented as a dataset replacement operation. These choices make
 the evidence reproducible and identify the remaining work for transaction logic.
 
-This reflection describes observed implementation decisions. My personal
-learning reflection for the final LMS submission will be written separately and
-reflect my own understanding and experience.
+This reflection describes observed implementation decisions. My individual
+reflection across all five portfolios is in the
+[final documentation reflection](../final-documentation/reflection.md).
 
 ## Sources and AI Use
 
