@@ -1,0 +1,6 @@
+{
+  "mongo_version": "8.0.30",
+  "image": "mongo:8.0.30-noble",
+  "database": "nexacart_portfolio4",
+  "recorded_at": "2026-10-27T09:57:22.298000+00:00"
+}

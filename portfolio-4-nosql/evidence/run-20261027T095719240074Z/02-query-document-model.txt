@@ -1,0 +1,132 @@
+QUERY 1: Electronics catalogue cards at or above NGN 40,000
+{
+  name: 'ClearSound Wireless Earbuds',
+  price: Decimal128('42000.00'),
+  attributes: {
+    connectivity: 'Bluetooth',
+    charging_case: true,
+    battery_hours: 24
+  },
+  review_snippets: [
+    {
+      customer_id: 1,
+      rating: 5,
+      excerpt: 'Clear audio and easy pairing.',
+      created_at: ISODate('2026-09-18T09:10:00.000Z')
+    }
+  ]
+}
+{
+  name: 'NexaOne Smartphone',
+  price: Decimal128('380000.00'),
+  attributes: {
+    storage_gb: 128,
+    ram_gb: 8,
+    operating_system: 'Android',
+    colour_options: [
+      'black',
+      'blue'
+    ]
+  },
+  review_snippets: [
+    {
+      customer_id: 1,
+      rating: 4,
+      excerpt: 'Fast and reliable battery life.',
+      created_at: ISODate('2026-09-18T09:00:00.000Z')
+    }
+  ]
+}
+{
+  name: 'LiteBook 14 Laptop',
+  price: Decimal128('620000.00'),
+  attributes: {
+    screen_inches: 14,
+    ram_gb: 16,
+    storage_gb: 512,
+    weight_kg: 1.3
+  },
+  review_snippets: []
+}
+
+QUERY 2: Products with a storage_gb attribute (schema flexibility)
+{
+  name: 'NexaOne Smartphone',
+  attributes: {
+    storage_gb: 128
+  },
+  tags: [
+    'smartphone',
+    'android',
+    'mobile'
+  ]
+}
+{
+  name: 'LiteBook 14 Laptop',
+  attributes: {
+    storage_gb: 512
+  },
+  tags: [
+    'laptop',
+    'study',
+    'office'
+  ]
+}
+
+QUERY 3: Average embedded review rating by category
+{
+  _id: 'Books and Stationery',
+  reviews: 1,
+  average_rating: 4
+}
+{
+  _id: 'Electronics',
+  reviews: 2,
+  average_rating: 4.5
+}
+{
+  _id: 'Groceries',
+  reviews: 1,
+  average_rating: 5
+}
+{
+  _id: 'Home and Kitchen',
+  reviews: 1,
+  average_rating: 4
+}
+
+QUERY 4: Customer profile with embedded delivery addresses and wishlist
+{
+  customer_id: 1,
+  name: {
+    first: 'Amara',
+    last: 'Okafor'
+  },
+  addresses: [
+    {
+      label: 'home',
+      street: '12 Admiralty Way',
+      city: 'Lekki',
+      state: 'Lagos',
+      country: 'Nigeria'
+    },
+    {
+      label: 'work',
+      street: '8 Allen Avenue',
+      city: 'Ikeja',
+      state: 'Lagos',
+      country: 'Nigeria'
+    }
+  ],
+  wishlist_product_ids: [
+    3,
+    8
+  ],
+  preferences: {
+    newsletter_opt_in: true,
+    preferred_categories: [
+      'Electronics',
+      'Books and Stationery'
+    ]
+  }
+}
